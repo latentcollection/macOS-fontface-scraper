@@ -79,3 +79,9 @@ Desktop.ini
 
 # Android
 .csettings
+
+# Generated data
+fontfaceScraper/bin/**/*
+
+# OF lib
+of_v0.12.0_osx_release/
