@@ -1,8 +1,6 @@
 # MacOS Fontface Scraper
 
-`OpenFrameworks` script that generates training data from font-faces installed on your Mac.
-
-![Finder window depicting output](docs/img.png)
+`OpenFrameworks` program that generates training data from font-faces installed on your Mac.
 
 To get this running
 - Make sure you have [OpenFrameworks](https://openframeworks.cc/download/) installed.
@@ -16,3 +14,5 @@ After successully running the script, the outputted files will be located in:
 ```
 /fontfaceScraper/bin/data/
 ```
+
+![Finder window depicting output](docs/img.png)
