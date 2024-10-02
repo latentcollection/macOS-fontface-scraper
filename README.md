@@ -1,18 +1,36 @@
-# MacOS Fontface Scraper
+# macOS Fontface Scraper
 
-`OpenFrameworks` program that generates training data from font-faces installed on your Mac.
+<img src="./docs/img.png" alt="Finder window depicting output" style="width: 400px; display: block;">
 
-To get this running
-- Make sure you have [OpenFrameworks](https://openframeworks.cc/download/) installed.
-- Set the path to your OpenFrameworks lib in Project.xcconfig
-- Tweak the configuration as needed in `Constants.h`
+An `OpenFrameworks` program that generates training data from font faces installed on your Mac.
 
-Alternatively, you can start from a fresh OF project (see projects generator), and replace the `src/` files.
+This tool automates the process of creating a dataset from installed fonts on macOS. It renders specified glyphs from each font, saving them as individual images. This can be particularly useful for machine learning projects focused on typography, such as font classification or glyph generation tasks.
 
-After successully running the script, the outputted files will be located in:
+## Setup and Usage
 
-```
-/fontfaceScraper/bin/data/
-```
+> [!NOTE]
+> The program will process fonts as specified in `Constants.h`. Adjust parameters like glyph choice, image size, and output limits there before running.
 
-![Finder window depicting output](docs/img.png)
+1. Prerequisites:
+   - Install [OpenFrameworks](https://openframeworks.cc/download/) on your macOS system.
+   - Ensure you have Xcode installed (for macOS development).
+
+2. Project Setup:
+   - Clone this repository or download the source code.
+   - Open `Project.xcconfig` and set the path to your OpenFrameworks library.
+   - Review and adjust the configuration in `Constants.h` as needed.
+
+3. Building the Project:
+   - Open the project in Xcode.
+   - Build and run the project from within Xcode.
+
+Alternatively, if you prefer to start from scratch:
+   - Use the OpenFrameworks project generator to create a new project.
+   - Replace the contents of the `src/` folder with the files from this repository.
+
+4. Running the Program:
+   - Execute the program. It will automatically process installed fonts.
+   - The script will generate images for each font it processes.
+
+5. Output:
+   After successful execution, find the generated images in: `/fontfaceScraper/bin/data/`
