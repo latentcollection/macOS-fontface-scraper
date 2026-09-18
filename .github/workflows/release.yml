@@ -12,7 +12,7 @@ jobs:
   release:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build universal binary
         run: make universal
@@ -32,7 +32,7 @@ jobs:
           shasum -a 256 fontscrape-macos-universal.tar.gz \
             > fontscrape-macos-universal.tar.gz.sha256
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
             dist/fontscrape-macos-universal.tar.gz
