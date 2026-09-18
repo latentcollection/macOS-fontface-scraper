@@ -1,0 +1,11 @@
+# Build output
+build/
+dist/
+fontscrape
+
+# Scraped glyphs
+out/
+
+# macOS
+.DS_Store
+._*

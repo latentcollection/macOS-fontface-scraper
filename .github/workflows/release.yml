@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build universal binary
+        run: make universal
+
+      - name: Smoke test
+        run: |
+          ./dist/fontscrape --help
+          ./dist/fontscrape -y --limit 5 --out /tmp/smoke
+          test "$(ls /tmp/smoke | wc -l)" -ge 1
+          lipo -archs dist/fontscrape | grep -q x86_64
+          lipo -archs dist/fontscrape | grep -q arm64
+
+      - name: Package
+        working-directory: dist
+        run: |
+          tar -czf fontscrape-macos-universal.tar.gz fontscrape
+          shasum -a 256 fontscrape-macos-universal.tar.gz \
+            > fontscrape-macos-universal.tar.gz.sha256
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/fontscrape-macos-universal.tar.gz
+            dist/fontscrape-macos-universal.tar.gz.sha256
+          generate_release_notes: true
